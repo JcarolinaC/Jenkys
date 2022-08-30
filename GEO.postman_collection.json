@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "7b8af658-d201-49c1-9118-b2d71ee3f50d",
+		"name": "GEO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18114703"
+	},
+	"item": [
+		{
+			"name": "CreateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.environment.set(\"IDUSER\",jsonData.id);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer f764dcd08e8fd741cd310212269dd7a4c53e6322e6868c1e79e58953f2dc9da8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Tenali Ramakrishna\", \"gender\":\"male\", \"email\":\"{{$randomEmail}}\", \"status\":\"active\"}"
+				},
+				"url": {
+					"raw": "{{URL}}/users",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListUsers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "gorest.co.in"
+					},
+					{
+						"key": "accept",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+					},
+					{
+						"key": "accept-language",
+						"value": "es-419,es;q=0.9"
+					},
+					{
+						"key": "cache-control",
+						"value": "max-age=0"
+					},
+					{
+						"key": "cookie",
+						"value": "_ga_7KR6VNWHWS=GS1.1.1660765235.1.0.1660765235.0.0.0; _ga=GA1.1.411348746.1660765236; __gads=ID=868073a0530256b4-2295125ea07c000c:T=1660765236:RT=1660765236:S=ALNI_MZGE5w0LTN-WTq8hFk6DpgBTtDmnQ; __gpi=UID=000008aeffb4ddfc:T=1660765236:RT=1660765236:S=ALNI_MYOOVvExvhMyRsrHFPaIhuwfwEFBg; _gorest_session=4rxmGwJ%2Fom9Hlaqq3GBOu74MyAEQGd46G8AlewJbFIO%2B%2BxXebxLyRaJkO9txpww%2B6A3lfvT9YST3BgDe3%2Fc3V%2B77DOTxi3OCvJufPXtIW1wb3fpUcdQde47Voo2HGnCR6wIX2dPNg82Z%2F8TFcEubzWVbqUNz17dP2JuIyXp5IF2ZCd7c4pyiyf0ehatlTHkBqarwdKevZ4lbWsLdqf8VN464pSRIQP9eLA9MG0qXXMga35%2BKX1NZrIHzOdHKBJcfWJXNS6b7l6XBUqBZFr4QVz9JftNiVWA%3D--uLFPspfVixtEGIyH--JM794gV1DcTzCeapegSaZw%3D%3D"
+					},
+					{
+						"key": "if-none-match",
+						"value": "W/\"386d773c0cc4ce02a5c87d48433c5512\""
+					},
+					{
+						"key": "referer",
+						"value": "https://gorest.co.in/"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Google Chrome\";v=\"104\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "document"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "navigate"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sec-fetch-user",
+						"value": "?1"
+					},
+					{
+						"key": "upgrade-insecure-requests",
+						"value": "1"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/users",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpDateUser",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer f764dcd08e8fd741cd310212269dd7a4c53e6322e6868c1e79e58953f2dc9da8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"{{$randomFirstName}}\", \"email\":\"{{$randomEmail}}\", \"status\":\"active\"}"
+				},
+				"url": {
+					"raw": "{{URL}}users/{{IDUSER}}",
+					"host": [
+						"{{URL}}users"
+					],
+					"path": [
+						"{{IDUSER}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer f764dcd08e8fd741cd310212269dd7a4c53e6322e6868c1e79e58953f2dc9da8"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/users/{{IDUSER}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"{{IDUSER}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "f764dcd08e8fd741cd310212269dd7a4c53e6322e6868c1e79e58953f2dc9da8",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status Code Correct \", function () {",
+					"    pm.expect(pm.response.code).to.be.oneOf([201, 200, 204]);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "https://gorest.co.in/public/v2/"
+		}
+	]
+}
